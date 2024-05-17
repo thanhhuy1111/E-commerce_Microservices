@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments_front :: page_head('Rubik Front-End', 'none')">
+</head>
+<body class="animsition">
+	
+	<header th:replace="fragments_front :: header_customer"></header>
+
+	<div th:replace="fragments_front :: cart_customer"></div>
+
+	<section th:replace="fragments_front :: slider_customer"></section>
+
+	<div th:replace="fragments_front :: banner_customer"></div>
+
+	<section th:replace="fragments_front :: category_customer"></section>
+	
+	<footer th:replace="fragments_front :: footer_customer"></footer>
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	
+
+	<div th:replace="fragments_front :: js_files_footer"></div>
+
+</body>
+</html>

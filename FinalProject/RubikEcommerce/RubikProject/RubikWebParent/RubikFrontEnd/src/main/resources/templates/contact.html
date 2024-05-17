@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments_front :: page_head('Rubik Front-End', 'none')">
+</head>
+<body>
+	
+	<!-- Header -->
+	<header th:replace="fragments_front :: header_customer"></header>
+
+	<!-- Cart -->
+	<div th:replace="fragments_front :: cart_customer"></div>
+
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92 container" style="background-image: url('images/bg-02.jpg');">
+		<h2 class="ltext-105 txt-center">
+			Contact
+		</h2>
+		<br>
+		<h1>
+		</h1>
+		<table class="table mt-5 text-left">
+			<thead>
+		    
+		    </thead>
+		    <tbody>
+		  
+		      
+		    </tbody>
+		  </table>
+	</section>	
+	
+	<div th:replace="fragments :: modal_dialog"></div>
+
+	<!-- Footer -->
+	<footer th:replace="fragments_front :: footer_customer"></footer>
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	
+	<div th:replace="fragments_front :: js_files_footer"></div>
+</body>
+</html>

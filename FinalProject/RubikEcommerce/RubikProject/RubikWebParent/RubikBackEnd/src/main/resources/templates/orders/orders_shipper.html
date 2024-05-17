@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(' Admin Control Panel', 'none')">
+</head>
+<body class="skin-red animate">
+	
+	<div th:replace="front_fragments :: side_bar"></div>
+
+    <div class="content">
+      	<div th:replace="front_fragments :: content_header"></div>
+   		
+		<div class="content-body mb-5">
+		
+			<div class="full-details m-5">
+				<div class="row">
+            		<div class="col-lg-12 grid-margin stretch-card">
+	            		<div class="row mb-4">
+	                		<div th:replace="fragments :: export('/orders', ${title})"></div>
+	                		<div th:replace="fragments :: search_form('/orders/page/1')" class=""></div>
+	                	</div>
+              			
+						<div class="row m-1">
+							<th:block th:each="order : ${listOrders}">
+								<div class="col-6">
+									<div class="card">
+										<div class="card-header">
+											<div class="row">
+												<div class="col-8">
+													<span>Order ID: [[${order.id}]]</span>
+												</div>
+												<div class="col-4">
+													<div class="float-right">
+														<a class="fas fa-file-alt fa-2x icon-green linkOrderDetail"
+															th:href="@{'/orders/detail/' + ${order.id}}"
+															title="View details of this order"
+															>
+														</a>								
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<div>
+												<i class="fas fa-user"></i>
+												<b>[[${order.getRecipientName}]]</b>
+											</div>
+											
+											<div>
+												<i class="fas fa-home"></i>
+												<i>[[${order.getAddressFinal}]]</i>
+											</div>
+											
+											<div>
+												<i class="fas fa-phone-alt">
+													[[${order.customer.phoneNumber}]]
+												</i>
+											</div>
+											
+											<div th:if="${order.COD}">
+												<span>COD: <b><div th:replace="fragments :: format_number(${order.subtotal})"></div></b></span>
+											</div>
+											
+											<div>&nbsp;</div>
+											
+											<div class="row">
+												<div class="col" th:replace="fragments :: shipper_update(${order.picked}, 'PICKED', 'fa-people-carry')"></div>	
+												<div class="col" th:replace="fragments :: shipper_update(${order.shipping}, 'SHIPPING', 'fa-shipping-fast')"></div>	
+												<div class="col" th:replace="fragments :: shipper_update(${order.delivered}, 'DELIVERED', 'fa-box-open')"></div>					
+											</div>
+										</div>
+									</div>
+								</div>
+							</th:block> 
+						</div>					             			
+                    </div>
+				</div>
+			</div>
+			
+			<div th:replace="fragments :: pagination('/orders', 'orders')"></div>
+		
+			<div th:replace="fragments :: confirm_modal_update"></div>
+			
+			<div class="modal fade" id="orderDetailModal">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+					</div>
+				</div>
+			</div>	
+		
+			
+		</div><!-- content-body -->
+		
+		<div th:replace="front_fragments :: footer_final"></div>
+	</div><!-- content -->
+
+
+    <div th:replace="front_fragments :: js_file"></div>
+    
+    <script type="text/javascript" th:src="@{/js/common_list.js}"></script>
+	
+	<script type="text/javascript">
+		moduleURL = "[[@{/orders}]]";
+
+		var csrfHeaderName = "[[${_csrf.headerName}]]";
+		var csrfValue = "[[${_csrf.token}]]";
+	
+		$(document).ready(function() {
+			handleLinkViewOrderDetails();
+		});
+
+		function handleLinkViewOrderDetails() {
+			$(".linkOrderDetail").on("click", function(e) {
+				e.preventDefault();
+				linkDetailURL = $(this).attr("href");
+				$("#orderDetailModal").modal("show").find(".modal-content").load(linkDetailURL);
+			});		
+		}
+	</script>
+	
+	<script th:src="@{/js/order_shipper.js}"></script>
+</body>
+</html>

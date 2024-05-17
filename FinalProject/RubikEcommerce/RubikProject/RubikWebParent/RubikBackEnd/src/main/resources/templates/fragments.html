@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:fragment="page_head(title, remove)" th:remove="${remove}">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+<title>[[${title}]]</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/dashboard/assets/css/style.min.css}" />
+
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+<link rel="stylesheet" type="text/css" th:href="@{/dropdown/dist/css/main.css}" />
+<script type="text/javascript"
+		th:src="@{/js/common.js}">
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+</head>
+<body>
+	<div th:fragment="menu">
+		<form th:action="@{/logout}" method="post" th:hidden="true"
+			name="logoutForm">
+			<input type="submit"/>
+		</form>
+		<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+			<a class="navbar-brand" th:href="@{/}"> <img
+				th:src="@{/images/ShopmeadminSmall.png}" />
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#topNavbar">
+				<span class="navbar-toggle-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="topNavbar">
+				<ul class="navbar-nav">
+				
+					<li class="nav-item">
+					<a class="nav-link" th:href="@{/users}"
+						sec:authorize="hasAuthority('Admin')">Users</a>
+					</li>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li class="nav-item">
+							<a class="nav-link"
+								th:href="@{/categories}">Categories
+							</a>
+						</li>
+					 </th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/brands}">Brands</a>
+						</li>
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+						<li class="nav-item">
+							<a class="nav-link"
+								th:href="@{/products}">Products
+							</a>
+						</li>
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li class="nav-item">
+							<a class="nav-link"
+								th:href="@{/customers}">Customers
+							</a>
+						</li>
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li class="nav-item">
+							<a class="nav-link"
+								th:href="@{/shipping}">Shipping
+							</a>
+						</li>
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/orders}">Orders</a>
+						</li>
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/report}">Sales
+								Report
+							</a>
+						</li>
+					</th:block>
+					
+					<li class="nav-item">
+						<a class="nav-link"
+							th:href="@{/articles}">Articles
+						</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/menus}"
+							sec:authorize="hasAuthority('Admin')">Menus</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link"
+							th:href="@{/settings}"
+							sec:authorize="hasAuthority('Admin')">Settings
+						</a>
+					</li>
+					
+					<li class="nav-item">
+						<span class="fas fa-user fa-2x icon-white"></span>
+					</li>
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown"
+							sec:authentication="principal.fullname"
+							th:href="@{/account/}">
+						</a>
+						
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{'/logout'}" id="logoutLink">Logout</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+	
+
+	
+	<th th:fragment="column_link(moduleURL, fieldName, columnLabel)" style="padding:0.75rem" class="text-center">
+		<a th:href="@{${moduleURL} + '/page/' + ${currentPage} + '?sortField=' + ${fieldName} +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + '&keyword=' + ${keyword != null ? keyword : ''}}"
+			class=""> [[${columnLabel}]] 
+			<span  th:class="${reverseSortDir == 'desc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+		</a> 
+		
+	</th>
+	
+	<td th:fragment="column_link_image(imagePath, image)">
+		<span th:if="${image == null}" class="fas fa-portrait fa-1x icon-dark"></span>
+		<img th:if="${image != null}" th:src="@{${imagePath}}"
+			class=""/>
+	</td>
+	
+	<td th:fragment="column_link_image_brand(imagePath, image)">
+		<span th:if="${image == null}" class="fas fa-portrait fa-1x icon-dark"></span>
+		<img th:if="${image != null}" th:src="@{${imagePath}}"
+			class="w-75" style="max-width: 100px; margin: 0 auto;"/>
+	</td>
+
+	<a th:fragment="page_link(moduleURL, pageNum, label)"
+		th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}"
+		class="page-link"> [[${label}]] 
+	</a>
+
+	<div th:fragment="status(enabled, entityName, entityURL)" th:remove="tag">
+		<a th:if="${enabled == true}" class="fas fa-check-circle fa-2x icon-blue" 
+			th:href="@{${entityURL} + '/enabled/false'}"
+			th:title="'Disable this ' + ${entityName}">
+		</a>
+			
+		<a th:if="${enabled == false}" class="fas fa-circle fa-2x icon-dark" 
+			th:href="@{${entityURL} + '/enabled/true'}"
+			th:title="'Enable this ' + ${entityName}">
+		</a>	
+	</div>
+	
+	<!-- Search -->
+	<div th:fragment="search_form_and_message()">
+		<form th:action="@{${moduleURL} + '/page/1'}" class="form-inline m-3">
+			<input type="hidden" name="sortField" th:value="${sortField}" />
+			<input type="hidden" name="sortDir" th:value="${sortDir}" />
+			
+			Filter:&nbsp;
+			<input type="search" name="keyword" th:value="${keyword}" class="form-control" required/>
+			&nbsp;&nbsp;
+			<button type="submit" class="btn btn-primary">
+				<i class="fas fa-search"></i>
+			</button>
+			&nbsp;&nbsp;
+			<button type="button" class="btn btn-secondary" onclick="clearFilter()">
+				<i class="fas fa-eraser"></i>
+			</button>
+		</form>
+		
+		<div th:if="${message != null}" class="alert alert-success text-center">
+			[[${message}]]
+		</div>		
+	</div>
+	
+	
+	<!-- modal_dialog -->
+	<div th:fragment="modal_dialog" class="modal fade text-center" id="modalDialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modalTitle">Warning</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<div class="modal-body">
+					<span id="modalBody"></span>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Cofirm modal -->
+	<div th:fragment="confirm_modal" class="modal fade text-center" id="confirmModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="model-title">Delete Confirmation</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+					
+				<div class="modal-body">
+					<span id="confirmText"></span>
+				</div>
+					
+				<div class="modal-footer">
+					<a class="btn btn-success" href="" id="yes-delete">Yes</a>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div th:fragment="modal_dialog" class="modal fade text-center" id="confirmModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modalTitle">Warning</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<div class="modal-body">
+					<span id="confirmText"></span>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div th:fragment="confirm_modal_update" class="modal fade text-center" id="confirmModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="model-title">Update Confirmation</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+					
+				<div class="modal-body">
+					<span id="confirmText"></span>
+				</div>
+					
+				<div class="modal-footer">
+					<a class="btn btn-success" href="" id="yes-update">Yes</a>
+					<button type="button" class="btn btn-danger" data-dismiss="modal" id="no-button">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Edit and delete category -->
+	<div th:fragment="category_action" th:remove="tag">
+		<a class="fas fa-edit fa-2x icon-green"
+			th:href="@{'/categories/edit/' + ${cat.id}}"
+			title="Edit this category">
+		</a>
+		&nbsp;
+		<th:block th:if="${cat.hasChildren == false}">
+			<a class="fas fa-trash fa-2x icon-dark link-delete-user"
+				th:href="@{'/categories/delete/' + ${cat.id}}"
+				th:userId="${cat.id}"
+				title="Delete this user">
+			</a>
+		</th:block>
+	</div>
+	
+	<!-- Pagination -->
+	<div th:fragment="pagination(moduleURL, entityName)" th:remove="tag">
+		<div class="text-center m-1" th:if="${totalItems > 0}">
+			<span>Showing [[${entityName}]] # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
+		</div>
+		<div class="text-center m-1" th:unless="${totalItems > 0}">
+			<span>No [[${entityName}]] found</span>
+		</div>
+	
+		<div th:if="${totalPages > 1}">
+			<nav>
+			  <ul class="pagination justify-content-center flex-wrap">
+			    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+			    	<a th:replace="fragments :: page_link(${moduleURL}, 1, 'First')"></a>
+			    </li>		  
+			    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+			    	<a th:replace="fragments :: page_link(${moduleURL}, ${currentPage - 1}, 'Previous')"></a>
+			    </li>
+			    
+			    <li th:class="${currentPage != i ? 'page-item': 'page-item active'}" 
+			    	th:each="i : ${#numbers.sequence(1, totalPages)}">
+			    	<a th:replace="fragments :: page_link(${moduleURL}, ${i}, ${i})"></a>
+			    </li>
+			    
+			    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+			    	<a th:replace="fragments :: page_link(${moduleURL}, ${currentPage + 1}, 'Next')"></a>
+			    </li>
+			    
+			    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+			    	<a th:replace="fragments :: page_link(${moduleURL}, ${totalPages}, 'Last')"></a>
+			    </li>		    
+			  </ul>
+			</nav>	
+		</div>		
+	</div>
+	
+	<div th:fragment="search_form(moduleURL)" class="col-5">
+		<form th:action="@{${moduleURL}}" class="card card-sm" style="border: none">
+			
+			<input type="hidden" name="sortField" th:value="${sortField}"/>
+				
+			<input type="hidden" name="sortDir" th:value="${sortDir}"/>
+			
+			<div class="card-body row no-gutters align-items-center">
+           		<div class="col-auto">
+               		<i class="fas fa-search text-body"></i>
+               	</div>
+   				<!--end of col-->
+        		<div class="col mx-2">
+         			<input class="form-control form-control-borderless" type="search" placeholder="Search topics or keywords"
+         				name="keyword" th:value="${keyword}">
+      			</div>
+            	<!--end of col-->
+           		<div class="col-auto mr-2">
+            		<button class="btn btn btn-success" type="submit">Search</button>
+	         	</div>
+	         	<div class="col-auto">
+            		<button type="button" class="btn btn-secondary" onclick="clearFilter()">
+    					Clear
+  					</button>
+	         	</div>
+	          	<!--end of col-->
+	        </div>
+			<!-- <input type="submit" value="Search" class="btn btn-primary"/> -->
+		</form>
+	</div>
+	
+	
+	
+	<!-- Export -->
+	<div th:fragment="export(moduleURL, title)" class="col-7 my-auto">
+		<a th:href="@{${moduleURL} + '/new'}" class="fas fa-user-plus fa-2x icon.silver mr-2"></a>
+		&nbsp;|&nbsp;
+		<a th:href="@{${moduleURL} + '/export/csv'}" class="fas fa-file-csv fa-2x icon.silver mr-2"></a>
+		&nbsp;|&nbsp;
+		<a th:href="@{${moduleURL} + '/export/excel'}" class="fas fa-file-excel fa-2x icon.silver mr-2"></a>
+		&nbsp;|&nbsp;
+		<a th:href="@{${moduleURL} + '/export/pdf'}" class="fas fa-file-pdf fa-2x icon.silver mr-2"></a>
+	</div>
+	
+	<!-- Export without new-->
+	<div th:fragment="export_without_new(moduleURL, title)" class="col-7 my-auto">
+		<a th:href="@{${moduleURL} + '/export/csv'}" class="fas fa-file-csv fa-2x icon.silver mr-2"></a>
+		&nbsp;|&nbsp;
+		<a th:href="@{${moduleURL} + '/export/excel'}" class="fas fa-file-excel fa-2x icon.silver mr-2"></a>
+		&nbsp;|&nbsp;
+		<a th:href="@{${moduleURL} + '/export/pdf'}" class="fas fa-file-pdf fa-2x icon.silver mr-2"></a>
+	</div>
+	
+	<!-- Delete and Edit not check-->
+	<div th:fragment="delete_edit(moduleURL, idEntity)">
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
+			<a class="fas fa-edit fa-2x icon-green" th:href="@{${moduleURL} +'edit/' + ${idEntity}}"
+				title="Edit this user">
+			</a>
+		</th:block>
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+		&nbsp; 
+		<a class="fas fa-trash fa-2x link-delete-user icon-red mt-2" 
+			th:href="@{${moduleURL} + 'delete/' + ${idEntity}}"
+			th:userId="${idEntity}"
+			title="Delete this user">
+		</a>
+		</th:block>
+	</div>
+	
+	
+	
+	<!--Edit not check-->
+	<div th:fragment="edit_entity(entityName, editURL)" th:remove="tag">
+		<a class="fas fa-edit fa-2x icon-green mr-2" th:href="@{${editURL}}"
+			th:title="'Edit this ' + ${entityName}"></a>
+	</div>
+	<!--Edit not check-->
+	
+	<!-- Delete check-->
+	<div th:fragment="delete_entity(entityName, entityId, deleteURL, visible)" th:remove="tag">
+		<th:block th:if="${visible}">
+			<a class="fas fa-trash fa-2x icon-red link-delete mr-2" 
+				th:href="@{${deleteURL}}"
+				th:entityId="${entityId}"
+				th:title="'Delete this ' + ${entityName}">
+			</a>
+		</th:block>
+	</div>
+	<!-- Delete check-->
+	
+	<div th:fragment="footer_frag">
+		<p>Yamen Control Panel - Copyright &copy; Yamen</p>  
+	</div>
+	
+	<!-- Message alert-->
+	
+	
+	<div th:fragment="message_alert">
+		<div th:if="${message != null}" class="alert alert-success"> 
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+			<i class="fas fa-shield-check"></i> 
+			<strong>Success Message</strong>
+			<hr class="message-inner-separator">
+			<p>[[${message}]]</p>
+		</div>
+	</div>
+	<!-- Message alert-->
+	
+	
+	<!-- List Roles Users -->
+	<div th:fragment="listRoles">
+		<th:block th:if="${roles.toString() == 'Admin'}">
+			<span class="badge badge-danger" th:text="${roles.toString()}"></span>
+		</th:block>
+																
+		<th:block th:if="${roles.toString() == 'Salesperson'}">
+			<span class="badge badge-primary" th:text="${roles.toString()}"></span>
+		</th:block>
+																
+		<th:block th:if="${roles.toString() == 'Editor'}">
+			<span class="badge badge-success" th:text="${roles.toString()}"></span>
+		</th:block>
+																
+		<th:block th:if="${roles.toString() == 'Assistant'}">
+			<span class="badge badge-info" th:text="${roles.toString()}"></span>
+		</th:block>
+																
+		<th:block th:if="${roles.toString() == 'Shipper'}">
+			<span class="badge badge-warning" th:text="${roles.toString()}"></span>
+		</th:block>
+	</div>
+	<!-- List Roles Users -->
+	
+	<!-- Format Number -->
+	<div th:fragment="format_number(amount)" th:remove="tag">
+		<span>[[${#numbers.formatDecimal(amount, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]][[${CURRENCY_SYMBOL}]]</span>
+	</div>
+	
+	<!-- Format Time -->
+	<div th:fragment="format_time(dateTime)" th:remove="tag">
+		<span th:text="${#dates.format(dateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+	</div>
+	
+	<!-- Shipping update -->
+	<div th:fragment="shipper_update(statusVar, statusName, iconName)" class="col">
+	<th:block th:if="${statusVar}">
+		<i th:class="'fas ' + ${iconName} + ' fa-2x icon-green'"></i>
+	</th:block>
+	<th:block th:unless="${statusVar}">
+		<a th:class="'fas ' + ${iconName} + ' fa-2x icon-dark link-update-status'"
+			th:id="'link' + ${statusName} + ${order.id}"
+			th:orderId="${order.id}"
+			th:status="${statusName}"
+			th:href="@{'/orders_shipper/update/' + ${order.id} + '/' + ${statusName}}"
+			></a>
+	</th:block>							
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<a th:fragment="page_link(moduleURL, pageNum, label)"
+	class="page-link" 
+	th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${label}]]</a>
+		
+<div th:fragment="pagination(moduleURL, entityName)" th:remove="tag">
+<div class="text-center m-1" th:if="${totalItems > 0}">
+	<span>Showing [[${entityName}]] # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
+</div>
+<div class="text-center m-1" th:unless="${totalItems > 0}">
+	<span>No [[${entityName}]] found</span>
+</div>
+
+<div th:if="${totalPages > 1}">
+	<nav>
+	  <ul class="pagination justify-content-center flex-wrap">
+	    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+	    	<a th:replace="fragments :: page_link(${moduleURL}, 1, 'First')"></a>
+	    </li>		  
+	    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+	    	<a th:replace="fragments :: page_link(${moduleURL}, ${currentPage - 1}, 'Previous')"></a>
+	    </li>
+	    
+	    <li th:class="${currentPage != i ? 'page-item': 'page-item active'}" 
+	    	th:each="i : ${#numbers.sequence(1, totalPages)}">
+	    	<a th:replace="fragments :: page_link(${moduleURL}, ${i}, ${i})"></a>
+	    </li>
+	    
+	    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+	    	<a th:replace="fragments :: page_link(${moduleURL}, ${currentPage + 1}, 'Next')"></a>
+	    </li>
+	    
+	    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+	    	<a th:replace="fragments :: page_link(${moduleURL}, ${totalPages}, 'Last')"></a>
+	    </li>		    
+	  </ul>
+	</nav>	
+</div>		
+</div>	
+
+
+<!-- modal_dialog -->
+	<div th:fragment="modal_dialog" class="modal fade text-center" id="modalDialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modalTitle">Warning</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<div class="modal-body">
+					<span id="modalBody"></span>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<div class="wrap-num-product flex-w m-tb-10"
+	th:fragment="quantity_control(quantityValue, productId)">
+	<a class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" th:pid="${productId}">
+		<i class="fs-16 zmdi zmdi-minus"></i>
+	</a>
+		
+	<input class="mtext-104 cl3 txt-center num-product" type="text"
+		th:value="${quantityValue}"
+		th:id="'quantity' + ${productId}">
+		
+	<a class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" th:pid="${productId}">
+		<i class="fs-16 zmdi zmdi-plus"></i>
+	</a>
+</div>
+	
+	
+<div th:fragment="product_price" th:remove="tag">
+	<th:block th:if="${product.discountPercent >= 0}">
+		<div th:replace="fragments :: price_fragment(${product.price})"></div>
+	</th:block>
+	
+	<th:block th:if="${product.discountPercent < 0}">
+		<span style="font-size: larger; color: darkred">
+			<div th:replace="fragments :: price_fragment(${product.getDiscountPrice})"></div>
+		</span>
+		<del>
+			<span>
+				<div th:replace="fragments :: price_fragment(${product.price})"></div>
+			</span>
+		</del>
+	</th:block>
+</div>
+
+<div th:fragment="format_number(productPrice)" th:remove="tag">
+	<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>[[${#numbers.formatDecimal(productPrice, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+</div>
+
+<th:block th:fragment="format_number_change_money(productPrice, currentSymbol)" th:remove="tag">
+	<th:block th:if="${currentSymbol == '$'}">
+		<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>[[${#numbers.formatDecimal(productPrice, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+	</th:block>
+	
+	<th:block th:unless="${currentSymbol == '$'}">
+		<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>[[${#numbers.formatDecimal(productPrice * 22000, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+	</th:block>
+</th:block>
+<!-- Format Time -->
+<div th:fragment="format_time(dateTime)" th:remove="tag">
+	<span th:text="${#dates.format(dateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+</div>
+
+
+<!-- Cofirm modal -->
+<div th:fragment="confirm_modal" class="modal fade text-center" id="confirmModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="model-title">Delete Confirmation</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+					
+			<div class="modal-body">
+				<span id="confirmText"></span>
+			</div>
+					
+			<div class="modal-footer">
+				<a class="btn btn-success" href="" id="yes-delete">Yes</a>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Search form -->
+<div th:fragment="search_form_and_message()">
+	<form th:action="@{${moduleURL} + '/page/1'}" class="form-inline m-3">
+		<input type="hidden" name="sortField" th:value="${sortField}" />
+		<input type="hidden" name="sortDir" th:value="${sortDir}" />
+			
+		Filter:&nbsp;
+		<input type="search" name="keyword" th:value="${keyword}" class="form-control" required/>
+		&nbsp;&nbsp;
+		<button type="submit" class="btn btn-primary">
+			<i class="fas fa-search"></i>
+		</button>
+		&nbsp;&nbsp;
+		<button type="button" class="btn btn-secondary" onclick="clearFilter()">
+			<i class="fas fa-eraser"></i>
+		</button>
+	</form>
+		
+	<div th:if="${message != null}" class="alert alert-success text-center">
+		[[${message}]]
+	</div>		
+</div>

@@ -1,0 +1,84 @@
+2023-04-17 21:03:20,867 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-04-17 21:05:06,866 [Worker-17: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.rubik:RubikProject:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\pom.xml.
+2023-04-17 21:05:26,317 [Worker-19: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.rubikme:RubikBackEnd:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikBackEnd\pom.xml.
+2023-04-17 21:05:29,041 [Worker-19: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.rubikme:RubikCommon:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+2023-04-17 21:05:38,529 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:05:38,530 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:05:38,552 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-17 21:05:38,618 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2683 resources
+2023-04-17 21:05:51,009 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:05:51,009 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:05:51,010 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikBackEnd\src\test\resources
+2023-04-17 21:05:55,146 [Worker-19: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.rubikme:RubikCommon:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikCommon\pom.xml.
+2023-04-17 21:05:55,652 [Worker-19: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.rubikme:RubikBackEnd:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikBackEnd\pom.xml.
+2023-04-17 21:05:55,871 [Worker-19: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier  to /RubikCommon/target/classes
+2023-04-17 21:05:56,473 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:05:56,473 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:05:56,474 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-17 21:05:56,476 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-04-17 21:05:56,482 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:05:56,482 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:05:56,482 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikCommon\src\test\resources
+2023-04-17 21:05:58,028 [Worker-19: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.rubikme:RubikFrontEnd:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikFrontEnd\pom.xml.
+2023-04-17 21:05:58,411 [Worker-19: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier  to /RubikCommon/target/classes
+2023-04-17 21:05:58,871 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:05:58,871 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:05:58,879 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-17 21:05:58,898 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2434 resources
+2023-04-17 21:06:09,160 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:09,160 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:09,161 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikFrontEnd\src\test\resources
+2023-04-17 21:06:12,438 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:12,438 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:12,637 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-17 21:06:12,841 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2683 resources
+2023-04-17 21:06:23,324 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:23,324 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:23,324 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikBackEnd\src\test\resources
+2023-04-17 21:06:25,792 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:25,793 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:25,794 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-17 21:06:25,796 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-04-17 21:06:25,803 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:25,803 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:25,803 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikCommon\src\test\resources
+2023-04-17 21:06:27,813 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:27,813 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:28,006 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-17 21:06:28,206 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2434 resources
+2023-04-17 21:06:37,465 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:37,465 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:37,466 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikFrontEnd\src\test\resources
+2023-04-17 21:06:39,029 [Worker-21: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.rubikme:RubikWebParent:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\pom.xml.
+2023-04-17 21:06:39,288 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier  to /RubikCommon/target/classes
+2023-04-17 21:06:39,425 [Worker-21: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.rubikme:RubikFrontEnd:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikFrontEnd\pom.xml.
+2023-04-17 21:06:39,461 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier  to /RubikCommon/target/classes
+2023-04-17 21:06:39,784 [Worker-21: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.rubikme:RubikBackEnd:0.0.1-SNAPSHOT @ C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikBackEnd\pom.xml.
+2023-04-17 21:06:39,841 [Worker-21: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier  to /RubikCommon/target/classes
+2023-04-17 21:06:42,101 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:42,101 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:42,101 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-04-17 21:06:42,102 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-04-17 21:06:42,106 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:42,106 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:42,107 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikBackEnd\src\test\resources
+2023-04-17 21:06:42,204 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:42,204 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:42,205 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-04-17 21:06:42,205 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-04-17 21:06:42,213 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:06:42,213 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:06:42,213 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikFrontEnd\src\test\resources
+2023-04-17 21:07:37,327 [Worker-23: Launching RubikFrontEnd - RubikFrontEndApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier null to /RubikCommon/target/classes
+2023-04-17 21:07:37,521 [Worker-23: Launching RubikFrontEnd - RubikFrontEndApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier null to /RubikCommon/target/classes
+2023-04-17 21:07:37,709 [Worker-23: Launching RubikFrontEnd - RubikFrontEndApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier null to /RubikCommon/target/classes
+2023-04-17 21:07:40,626 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:07:40,626 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:07:40,626 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-17 21:07:40,635 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-04-17 21:07:40,639 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-17 21:07:40,639 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-17 21:07:40,640 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\VinhDuong\Downloads\group09\Group 09\Group 09\FinalProject\RubikEcommerce\RubikProject\RubikWebParent\RubikBackEnd\src\test\resources
+2023-04-17 21:09:30,842 [Worker-18: Launching RubikBackEnd - RubikBackEndApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier null to /RubikCommon/target/classes
+2023-04-17 21:09:31,014 [Worker-18: Launching RubikBackEnd - RubikBackEndApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier null to /RubikCommon/target/classes
+2023-04-17 21:09:31,188 [Worker-18: Launching RubikBackEnd - RubikBackEndApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/RubikCommon: com.rubikme:RubikCommon:0.0.1-SNAPSHOT with classifier null to /RubikCommon/target/classes
